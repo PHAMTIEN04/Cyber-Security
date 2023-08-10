@@ -1,0 +1,49 @@
+<mxfile host="app.diagrams.net" modified="2023-08-02T20:19:13.347Z" agent="Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/115.0.0.0 Safari/537.36" etag="e2oFAXaYoNT9bkmwEKIT" version="21.6.5" type="device">
+  <diagram name="Trang-1" id="u2st_K3AqDDW6p5V9r8l">
+    <mxGraphModel dx="1050" dy="566" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="PsQ5kO2IlvH7tem_f4N5-1" value="" style="image;points=[];aspect=fixed;html=1;align=center;shadow=0;dashed=0;image=img/lib/allied_telesis/computer_and_terminals/Personal_Computer.svg;" vertex="1" parent="1">
+          <mxGeometry x="130" y="260" width="45.6" height="61.800000000000004" as="geometry" />
+        </mxCell>
+        <mxCell id="PsQ5kO2IlvH7tem_f4N5-2" value="" style="image;aspect=fixed;perimeter=ellipsePerimeter;html=1;align=center;shadow=0;dashed=0;spacingTop=3;image=img/lib/active_directory/web_server.svg;" vertex="1" parent="1">
+          <mxGeometry x="750" y="247.95" width="68.72" height="85.9" as="geometry" />
+        </mxCell>
+        <mxCell id="PsQ5kO2IlvH7tem_f4N5-3" value="" style="verticalLabelPosition=bottom;sketch=0;aspect=fixed;html=1;verticalAlign=top;strokeColor=none;align=center;outlineConnect=0;shape=mxgraph.citrix.proxy_server;" vertex="1" parent="1">
+          <mxGeometry x="580" y="245.9" width="76.5" height="90" as="geometry" />
+        </mxCell>
+        <mxCell id="PsQ5kO2IlvH7tem_f4N5-4" value="" style="dashed=0;outlineConnect=0;html=1;align=center;labelPosition=center;verticalLabelPosition=bottom;verticalAlign=top;shape=mxgraph.weblogos.chrome" vertex="1" parent="1">
+          <mxGeometry x="290" y="253.2" width="74.8" height="75.4" as="geometry" />
+        </mxCell>
+        <mxCell id="PsQ5kO2IlvH7tem_f4N5-6" value="" style="endArrow=classic;html=1;rounded=0;" edge="1" parent="1" target="PsQ5kO2IlvH7tem_f4N5-4">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="180" y="290" as="sourcePoint" />
+            <mxPoint x="270" y="290" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="PsQ5kO2IlvH7tem_f4N5-7" value="" style="endArrow=classic;html=1;rounded=0;" edge="1" parent="1" target="PsQ5kO2IlvH7tem_f4N5-3">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="380" y="291" as="sourcePoint" />
+            <mxPoint x="300" y="301" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="PsQ5kO2IlvH7tem_f4N5-8" value="" style="endArrow=classic;html=1;rounded=0;" edge="1" parent="1" target="PsQ5kO2IlvH7tem_f4N5-3">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="740" y="290" as="sourcePoint" />
+            <mxPoint x="440" y="270" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="PsQ5kO2IlvH7tem_f4N5-9" value="" style="endArrow=none;html=1;rounded=0;" edge="1" parent="1">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="460" y="400" as="sourcePoint" />
+            <mxPoint x="460" y="170" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="PsQ5kO2IlvH7tem_f4N5-10" value="Storage Cache" style="rounded=1;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="267.4" y="350" width="120" height="60" as="geometry" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>

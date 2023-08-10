@@ -1,0 +1,24 @@
+
+Lộ trình Cyber Security là một hướng dẫn sắp xếp các kiến thức và kỹ năng cần thiết để trở thành một chuyên gia an ninh mạng hoặc chuyên gia bảo mật thông tin. Lộ trình này có thể thay đổi tùy theo mục tiêu và lĩnh vực cụ thể mà bạn muốn theo đuổi trong Cyber Security. Dưới đây là một lộ trình cơ bản và tổng quát cho việc học Cyber Security:
+
+Cơ bản IT và Networking: Bắt đầu từ những kiến thức cơ bản về IT và mạng máy tính, bao gồm hệ điều hành, mạng TCP/IP, địa chỉ IP, cấu hình mạng và giao thức mạng.
+
+Lập trình và Scripting: Nắm vững ít nhất một ngôn ngữ lập trình như Python, C++, Java hoặc Ruby. Các kỹ năng viết script cũng rất hữu ích trong việc tự động hóa và phân tích dữ liệu.
+
+Bảo mật hệ thống và mạng: Học về các nguy cơ bảo mật hệ thống và mạng, phát hiện và ngăn chặn tấn công, bảo mật hệ điều hành và tường lửa.
+
+Bảo mật ứng dụng và Web: Tập trung vào kiểm thử bảo mật ứng dụng và Web, tìm lỗ hổng bảo mật trong mã nguồn và các kỹ thuật tấn công phổ biến như XSS (Cross-Site Scripting), SQL Injection, v.v.
+
+Quản lý an ninh và Rủi ro: Nắm vững các khái niệm quản lý an ninh thông tin, phân tích rủi ro và phòng ngừa tấn công.
+
+An toàn dữ liệu và mã hóa: Học về các phương pháp bảo vệ dữ liệu quan trọng và mã hóa thông tin.
+
+Kỹ thuật số hóa tội phạm và điều tra: Hiểu về các kỹ thuật dùng trong điều tra tội phạm số và thu thập chứng cứ điện tử.
+
+Phát triển Penetration Testing và Ethical Hacking: Học cách thực hiện kiểm tra thâm nhập và đạo đức học Hacker (Ethical Hacking) để tìm lỗ hổng bảo mật và cải thiện an ninh.
+
+Chứng chỉ và Chương trình đào tạo: Kiếm các chứng chỉ và tham gia các chương trình đào tạo chuyên sâu như Certified Ethical Hacker (CEH), CompTIA Security+, Certified Information Systems Security Professional (CISSP), v.v.
+
+Thực hành và Dự án: Áp dụng kiến thức đã học vào thực hành thực tế và tham gia vào các dự án an ninh mạng để tích lũy kinh nghiệm.
+
+Lưu ý rằng Cyber Security là một lĩnh vực rộng lớn và liên tục phát triển. Do đó, việc học tập và nâng cao kiến thức cần liên tục được thực hiện để duy trì sự cập nhật với các xu hướng và thách thức mới trong an ninh mạng.
