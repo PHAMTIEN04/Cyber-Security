@@ -1,0 +1,19 @@
+Các lệnh bạn đưa ra là các lệnh cấu hình một thiết bị mạng trong Cisco Packet Tracer. Dưới đây là giải thích từng lệnh:
+
+1. **enable**: Lệnh này được sử dụng để chuyển từ chế độ USER EXEC mode sang chế độ PRIVILEGED EXEC mode. Chế độ PRIVILEGED EXEC mode cung cấp quyền truy cập đầy đủ vào các lệnh cấu hình và chẩn đoán thiết bị.
+
+2. **configure terminal (config)**: Lệnh này được sử dụng để chuyển từ chế độ PRIVILEGED EXEC mode sang chế độ GLOBAL CONFIGURATION mode. Trong chế độ này, bạn có thể cấu hình các thiết lập toàn cục cho thiết bị.
+
+3. **host R1**: Đây là lệnh cấu hình tên cho thiết bị. Trong trường hợp này, tên thiết bị được đặt là "R1".
+
+4. **interface GigabitEthernet 0/0/0**: Lệnh này chuyển bạn vào chế độ cấu hình giao diện cho cổng GigabitEthernet 0/0/0. Bạn sẽ có thể cấu hình các thiết lập cụ thể cho cổng này.
+
+5. **no shutdown**: Lệnh này kích hoạt cổng GigabitEthernet 0/0/0, bật nó lên sau khi bạn đã cấu hình nó. Nếu không bật cổng này, nó sẽ không hoạt động.
+
+6. **ip address 10.1.1.1 255.255.255.0**: Lệnh này cấu hình địa chỉ IP cho cổng GigabitEthernet 0/0/0. Trong trường hợp này, địa chỉ IP được đặt là 10.1.1.1 với mạscara mạng 255.255.255.0.
+
+7. **end**: Lệnh này chuyển bạn ra khỏi chế độ cấu hình và quay trở lại chế độ PRIVILEGED EXEC mode.
+
+8. **ping 10.1.1.1**: Lệnh này sử dụng để kiểm tra kết nối bằng cách gửi gói tin ICMP ping đến địa chỉ IP 10.1.1.1. Nếu ping thành công, nghĩa là có kết nối đúng với địa chỉ IP bạn vừa cấu hình trên cổng GigabitEthernet 0/0/0.
+
+Các lệnh trên giúp bạn cấu hình một thiết bị mạng có tên "R1" với một cổng GigabitEthernet 0/0/0 được cấu hình với địa chỉ IP 10.1.1.1 và kích hoạt để sử dụng. Sau đó, lệnh ping được sử dụng để kiểm tra xem bạn có thể giao tiếp thành công với địa chỉ IP 10.1.1.1 hay không.
