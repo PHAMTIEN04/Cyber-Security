@@ -1,0 +1,35 @@
+Configure DHCP on Router1 as follows:
+1) Excluded address range 10.1.1.1 to 10.1.1.100 
+=> ip dhcp excluded-address 10.1.1.1 10.1.1.100
+
+2) Pool name = pc
+=> ip dhcp pool pc
+
+3) Network 10.1.1.0/24
+=> network 10.1.1.0 255.255.255.0
+
+4) Default Gateway = Router 1
+=> default-router 10.1.1.2
+
+5) DNS Server = Router 1
+=> dns-server 10.1.1.254
+
+6) Test that PC can ping loopback of Router 1
+
+
+
+It looks like you've provided the correct DHCP configuration for Router1 in Cisco IOS syntax. Here's a summary of the configuration you've mentioned:
+
+1. Excluded address range: You've excluded the IP addresses from 10.1.1.1 to 10.1.1.100 from the DHCP pool.
+
+2. DHCP pool name: You've created a DHCP pool named "pc."
+
+3. Network: You've defined the network as 10.1.1.0/24.
+
+4. Default Gateway: The default gateway for DHCP clients is set to 10.1.1.2, which is Router1's interface IP address.
+
+5. DNS Server: The DNS server for DHCP clients is set to 10.1.1.254, which is presumably another interface on Router1.
+
+6. Finally, you want to test whether the PC can ping the loopback interface of Router1. You can do this by using the PC's command prompt or terminal to run the "ping" command to the loopback IP address of Router1 (usually 127.0.0.1 or the specific loopback IP you've configured on the router).
+
+Assuming there are no issues with the configuration, the PC should be able to obtain an IP address from Router1's DHCP pool and successfully ping Router1's loopback interface. If you encounter any issues during the testing, please provide more details, and I'll be happy to assist further.
