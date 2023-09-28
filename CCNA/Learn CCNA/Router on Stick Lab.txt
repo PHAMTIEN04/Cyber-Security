@@ -1,0 +1,84 @@
+Configure Router on a stick as follows:
+1) VLAN 1 = 10.1.1.0/24, VLAN 10 = 10.1.10.0/24, VLAN 20 = 10.1.20.0/24
+2) Router = last IP address in subnet
+3) Switch = 10.1.1.253/24 only
+Configure VLANs on switch (PC1 in VLAN 10 and PC2 in VLAN 20)
+4) Configure link between switch and router
+5) Make sure PC1 can ping PC2 (PC1 = 10.1.10.1) PC2 = 10.1.20.2)
+****************************************************************************
+To configure a router on a stick with VLANs and enable communication between PC1 and PC2, you'll need to follow these steps:
+
+**Step 1: Create VLANs on the Switch**
+
+Log into your switch and enter configuration mode. The specific commands may vary depending on your switch's operating system, but the general idea is:
+
+```shell
+enable
+configure terminal
+
+vlan 10
+name VLAN10
+exit
+
+vlan 20
+name VLAN20
+exit
+
+interface GigabitEthernet0/1  # This is the interface connecting to the router
+switchport trunk encapsulation dot1q
+switchport mode trunk
+exit
+
+interface GigabitEthernet0/2  # This is the interface connecting to PC1
+switchport access vlan 10
+exit
+
+interface GigabitEthernet0/3  # This is the interface connecting to PC2
+switchport access vlan 20
+exit
+
+end
+```
+
+**Step 2: Configure the Router**
+
+Log into your router and enter configuration mode. Again, the commands may vary depending on your router's OS, but here's a general idea:
+
+```shell
+enable
+configure terminal
+
+interface GigabitEthernet0/0.1  # Subinterface for VLAN 1
+encapsulation dot1Q 1
+ip address 10.1.1.253 255.255.255.0
+exit
+
+interface GigabitEthernet0/0.10  # Subinterface for VLAN 10
+encapsulation dot1Q 10
+ip address 10.1.10.254 255.255.255.0
+exit
+
+interface GigabitEthernet0/0.20  # Subinterface for VLAN 20
+encapsulation dot1Q 20
+ip address 10.1.20.254 255.255.255.0
+exit
+
+end
+```
+
+**Step 3: Verify Connectivity**
+
+Now, you should have the following:
+
+- PC1 in VLAN 10 with IP address 10.1.10.1.
+- PC2 in VLAN 20 with IP address 10.1.20.2.
+
+You should be able to ping from PC1 to PC2. Open a command prompt on PC1 and run:
+
+```shell
+ping 10.1.20.2
+```
+
+If everything is configured correctly, PC1 should be able to ping PC2 successfully.
+
+These configurations assume that your router and switch are set up with the correct VLAN trunking configuration, and the PCs are correctly connected to the respective switch ports. Also, ensure that the PCs have their default gateways set to the appropriate router subinterface IP addresses for their VLANs (e.g., PC1's default gateway should be set to 10.1.10.254).
