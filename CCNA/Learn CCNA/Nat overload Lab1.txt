@@ -1,0 +1,57 @@
+Sure, let's configure NAT Overload (PAT) on a Cisco router in Cisco Packet Tracer while specifying the inside and outside interfaces. NAT Overload allows multiple internal devices to share a single public IP address for Internet access, and PAT uses different ports to distinguish individual connections.
+
+**Step 1: Define Inside and Outside Interfaces**
+
+1. To define the inside interface, we'll use the FastEthernet0/1 interface on the router:
+
+```bash
+enable
+configure terminal
+interface FastEthernet0/1
+ip nat inside
+```
+
+2. To define the outside interface, we'll use the FastEthernet0/0 interface:
+
+```bash
+interface FastEthernet0/0
+ip nat outside
+```
+
+**Step 2: Create an Access Control List (ACL) to Define the Internal IP Range**
+
+1. Create an ACL to specify the internal IP range you want to NAT. In this example, the internal IP range is 192.168.1.0/24:
+
+```bash
+access-list 1 permit 192.168.1.0 0.0.0.255
+```
+
+2. Conclude this step with the `exit` command:
+
+```bash
+exit
+```
+
+**Step 3: Configure NAT Overload (PAT)**
+
+1. Use the following command to configure NAT Overload using the ACL and the outside interface:
+
+```bash
+ip nat inside source list 1 interface FastEthernet0/0 overload
+```
+
+Where:
+- `list 1` is the ACL number created in the previous step to specify the internal IP range.
+- `FastEthernet0/0` is the outside (public) interface of the router.
+
+**Step 4: Finish and Save Configuration**
+
+1. Conclude the configuration with the `exit` command to exit the configuration mode.
+
+2. Save the configuration using the `write memory` command to ensure that the configuration is saved:
+
+```bash
+write memory
+```
+
+Once completed, your router will perform NAT Overload (PAT), allowing multiple internal devices to share a single public IP address through the outside interface, using different ports to distinguish individual connections. This enables you to conserve public IP addresses and share Internet connectivity with multiple internal devices.
