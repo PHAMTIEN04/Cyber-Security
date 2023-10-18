@@ -1,0 +1,46 @@
+#Buổi 1
+- Cáp Console: Cáp console thường được sử dụng để kết nối máy tính hoặc máy tính xách tay của bạn với cổng console của thiết bị mạng như router hoặc switch. Điều này cho phép bạn quản lý và cấu hình thiết bị từ máy tính của bạn. Cáp console sẽ được kết nối từ cổng console của thiết bị đến cổng serial của máy tính hoặc máy tính xách tay của bạn.
+
+- Cáp thẳng (Straight-through Cable): Cáp thẳng thường được sử dụng để kết nối hai thiết bị mạng khác nhau, ví dụ, kết nối máy tính với switch hoặc router. Cáp thẳng được sử dụng khi bạn muốn kết nối các cổng khác nhau trên các thiết bị.
+
+- Cáp Chéo (Crossover Cable): Cáp chéo thường được sử dụng để kết nối hai thiết bị cùng loại như máy tính với máy tính hoặc switch với switch. Cáp chéo sửa lỗi dây nối để đảm bảo rằng các cổng tương tự trên các thiết bị được kết nối với nhau.
+
+- Cáp Serial DCE: Cáp serial DCE thường được sử dụng để kết nối các thiết bị serial như router với các thiết bị khác. Thiết bị DCE (Data Circuit-Terminating Equipment) thường có trách nhiệm đảm bảo kết nối serial hoạt động.
+
+Router Modes
+------------
+User Mode -> Privileged mode -> Global mode
+
+
+CLI Command Modes
+*User EXEC mode
+Router>
+Router>enable
+*Privileged EXEC mode
+Router#
+Router#config terminal
+*Global mode
+
+
+Configuring Router Passwords
+----------------------------
+*Console Password
+Router(config)#line console 0
+Router(config-line)#login
+Router(config-line)#password cisco
+
+*Virtual Terminal Password
+Router(config)#line vty 0 4
+Router(config-line)#login
+Router(config-line)#password cisco
+
+*Enable Password 
+Note: Not reconmmended, clear text
+Router(config)#enable password san-fran
+
+Note: Quay về mode sử dụng exit
+
+Access PC to Router
+C:/telnet <ip router>
+
+*Configuring a Serial Interface
