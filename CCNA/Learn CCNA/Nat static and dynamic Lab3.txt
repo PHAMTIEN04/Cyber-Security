@@ -1,0 +1,35 @@
+Dynamic NAT is a technique used to map one IP address to another automatically (one-to-one) by converting from a local network IP to a registered valid IP. Typically, Dynamic NAT will translate from local network IP addresses to valid registered IP addresses.
+
+Here's how to configure Dynamic NAT:
+
+1. Identify the IP address pool for the external network:
+
+```bash
+Router(config)# ip nat pool [name start IP] [name end IP] netmask [netmask]/prefix-length [prefix-length]
+```
+
+2. Set up an ACL to create a list of local network addresses allowed for IP conversion:
+
+```bash
+Router(config)# access-list [access-list-number-permit] source [source-wildcard]
+```
+
+3. Establish the relationship between the source IP addresses (set in the ACL) and the valid external IP addresses:
+
+```bash
+Router(config)# ip nat inside source list <acl-number> pool <name>
+```
+
+4. Define the interface connected to the internal network:
+
+```bash
+Router(config-if)# ip nat inside
+```
+
+5. Define the interface connected to the external network:
+
+```bash
+Router(config-if)# ip nat outside
+```
+
+This configuration enables Dynamic NAT, allowing local network addresses to be mapped to specific registered external IP addresses.

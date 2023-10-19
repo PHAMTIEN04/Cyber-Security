@@ -1,0 +1,43 @@
+To configure Static NAT in Cisco Packet Tracer, you can use the command line on a router in the simulation. Here's an example of how to configure Static NAT:
+
+1. Start by simulating a router and a computer that needs to connect to the internet through the router.
+
+2. Attach two interfaces to the router: one interface connecting to the internal network and another interface connecting to the Internet or an external network. Use the following commands to configure IP addresses for both interfaces:
+
+```bash
+Router(config)# interface FastEthernet0/0
+Router(config-if)# ip address 192.168.1.1 255.255.255.0
+Router(config-if)# no shutdown
+
+Router(config)# interface Serial0/0
+Router(config-if)# ip address 203.0.113.1 255.255.255.0
+Router(config-if)# no shutdown
+```
+
+3. Now, you need to configure Static NAT to map an internal IP address to a public IP address. Here's an example of how to configure Static NAT:
+
+```bash
+Router(config)# ip nat inside source static 192.168.1.2 203.0.113.2
+```
+
+In this example, the internal IP address 192.168.1.2 is statically mapped to the public IP address 203.0.113.2.
+
+4. Enable NAT on the inside interface:
+
+```bash
+Router(config)# interface FastEthernet0/0
+Router(config-if)# ip nat inside
+```
+
+5. Enable NAT on the outside interface:
+
+```bash
+Router(config)# interface Serial0/0
+Router(config-if)# ip nat outside
+```
+
+6. Ensure that the internal computer's IP address is configured to use the router's IP address (192.168.1.1) as the default gateway.
+
+7. Test the connection by attempting to access the internet from the internal computer. Packets from the internal computer will be statically mapped to the public IP address you configured.
+
+Please note that specific configurations may vary depending on your network model and IP addresses. However, these basic steps allow you to configure Static NAT in Cisco Packet Tracer.
