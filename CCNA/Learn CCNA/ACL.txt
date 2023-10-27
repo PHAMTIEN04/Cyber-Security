@@ -1,0 +1,99 @@
+Certainly, here are the complete commands for Access Control Lists (ACLs) in Cisco routers with detailed explanations for each command:
+
+**Standard Access List (AL Standard):**
+
+1. Create a standard ACL:
+   ```bash
+   R(config)# access-list <number> [permit | deny] <source IP> <wildcard mask>
+   ```
+   - `access-list`: This command creates an ACL.
+   - `<number>`: This is a unique numeric identifier for the ACL, ranging from 1 to 99.
+   - `[permit | deny]`: You specify whether to permit or deny traffic from the specified source IP.
+   - `<source IP>`: The source IP address you want to filter.
+   - `<wildcard mask>`: The wildcard mask defining the range of addresses to match.
+
+   Example: Deny network 192.168.1.0/24 from accessing network 192.168.20.1:
+   ```bash
+   R(config)# access-list 1 deny 192.168.1.0 0.0.0.255
+   ```
+
+2. Apply the standard ACL to an interface in the "in" or "out" direction:
+   ```bash
+   R(config)# interface <interface>
+   R(config-if)# ip access-group <number> [in | out]
+   ```
+   - `<interface>`: The specific interface to which you want to apply the ACL.
+   - `<number>`: The ACL number you created earlier.
+   - `[in | out]`: Specify whether the ACL should filter incoming or outgoing traffic on the interface.
+
+**Extended Access List (AL Extended):**
+
+1. Create an extended ACL:
+   ```bash
+   R(config)# access-list <number> [permit | deny] <protocol> <source IP> <wildcard mask> <destination IP> <wildcard mask> [eq | lt | gt <source port>] [eq | lt | gt <destination port>]
+   ```
+   - `access-list`: This command creates an extended ACL.
+   - `<number>`: A numeric identifier for the ACL, ranging from 100 to 199.
+   - `[permit | deny]`: Specify whether to permit or deny traffic based on the criteria.
+   - `<protocol>`: The protocol you want to filter (e.g., tcp, udp).
+   - `<source IP>`: The source IP address to filter.
+   - `<wildcard mask>`: The wildcard mask for the source IP.
+   - `<destination IP>`: The destination IP address to filter.
+   - `<wildcard mask>`: The wildcard mask for the destination IP.
+   - `[eq | lt | gt <source port>]`: Optional specification of source port conditions.
+   - `[eq | lt | gt <destination port>]`: Optional specification of destination port conditions.
+
+   Example: Deny network 192.168.1.0/24 from accessing server 192.168.20.6 via HTTP:
+   ```bash
+   R(config)# access-list 100 deny tcp 192.168.1.0 0.0.0.255 192.168.20.6 0.0.0.0 eq 80
+   ```
+
+2. Apply the extended ACL to an interface in the "in" or "out" direction:
+   ```bash
+   R(config)# interface <interface>
+   R(config-if)# ip access-group <number> [in | out]
+   ```
+   - `<interface>`: The specific interface to which you want to apply the ACL.
+   - `<number>`: The ACL number you created earlier.
+   - `[in | out]`: Specify whether the ACL should filter incoming or outgoing traffic on the interface.
+
+**Named ACLs:**
+
+1. Create a named ACL (Standard or Extended):
+   ```bash
+   R(config)# ip access-list [standard | extended] <name>
+   ```
+   - `<name>`: A user-defined name for the ACL.
+   - `[standard | extended]`: Specify whether the named ACL is standard or extended.
+
+2. Configure permit or deny statements within the named ACL:
+   ```bash
+   R(config-std-name or config-ext-name)# [sequence] permit <criteria>
+   ```
+   - `[sequence]`: An optional sequence number for the entry, allowing you to specify the order of evaluation.
+   - `permit <criteria>`: Define what traffic to permit within the named ACL.
+
+3. Apply the named ACL to an interface in the "in" or "out" direction:
+   ```bash
+   R(config)# interface <interface>
+   R(config-if)# ip access-group <name> [in | out]
+   ```
+   - `<interface>`: The specific interface to which you want to apply the named ACL.
+   - `<name>`: The name of the ACL you created.
+   - `[in | out]`: Specify whether the ACL should filter incoming or outgoing traffic on the interface.
+
+**Checking ACLs:**
+
+1. To view the configured ACLs:
+   ```bash
+   R# show access-list
+   ```
+   - Use this command to display the list of ACLs along with their rules.
+
+2. To check which interfaces have ACLs applied:
+   ```bash
+   R# show ip interface <interface>
+   ```
+   - Use this command to verify which interfaces have ACLs applied and in which direction.
+
+Remember to replace placeholders like `<number>`, `<name>`, `<interface>`, and others with actual values relevant to your network configuration.
