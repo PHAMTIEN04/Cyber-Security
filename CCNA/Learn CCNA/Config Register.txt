@@ -1,0 +1,37 @@
+The `config-register` command in Cisco Packet Tracer is used to set the configuration register value for a Cisco router. The configuration register is a 16-bit value that determines how the router behaves during the boot process. It controls various parameters, including whether the router should boot into normal operation mode or into ROM Monitor (ROMMON) mode.
+
+To set the configuration register value in Cisco Packet Tracer, follow these steps:
+
+1. Access the router's command-line interface (CLI):
+   - Click on the router in Packet Tracer.
+   - A terminal window or console window should open, giving you access to the router's CLI.
+
+2. Enter privileged exec mode:
+   ```
+   enable
+   ```
+
+3. Enter global configuration mode:
+   ```
+   configure terminal
+   ```
+
+4. Set the configuration register value using the `config-register` command. The most common value to set is `0x2102`, which is the default value for normal booting. To set it to `0x2102`, use the following command:
+   ```
+   config-register 0x2102
+   ```
+
+5. To save the changes, exit global configuration mode and write the configuration to memory:
+   ```
+   end
+   write memory
+   ```
+
+6. Reboot the router:
+   ```
+   reload
+   ```
+
+After the router reboots, it will use the new configuration register value. Keep in mind that changing the configuration register value can have a significant impact on the router's behavior, so make sure you understand the implications of the value you are setting.
+
+If you want to set the configuration register value to something other than `0x2102`, make sure you have a specific reason for doing so and understand how it affects the router's boot process.
