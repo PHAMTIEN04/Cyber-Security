@@ -1,0 +1,9 @@
+
+
+1. When you create a new configuration and save it on a router in Cisco Packet Tracer, the new configuration will overwrite the current configuration in the router's RAM.
+
+2. The `config-register` value is a setting that determines how the router boots and processes configurations when it is restarted. Creating and saving a new configuration does not affect the `config-register` value.
+
+3. To apply the new configuration after saving it, you can either restart the router or use the "reload" command to reload the configuration from NVRAM (where the default configuration is stored). When the router restarts, the `config-register` value will determine whether the router uses the configuration in RAM or NVRAM.
+
+In summary, the new configuration overwrites the existing configuration temporarily in RAM, but it does not change the `config-register` value. The `config-register` value still determines how the router handles configurations when it is restarted.
