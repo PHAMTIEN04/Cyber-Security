@@ -1,0 +1,8 @@
+Run commands and command help
+
+"command" [options] [arguments]
++ Run command in simplest form
++ Remember the acronym of the command, for example: id (identity)
+Command help
++ "man" command
++ google

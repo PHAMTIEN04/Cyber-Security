@@ -1,0 +1,5 @@
+Essential file system commands
+
+pwd - print name of current/working directory
+cd - change directory
+ls - list directory contents
