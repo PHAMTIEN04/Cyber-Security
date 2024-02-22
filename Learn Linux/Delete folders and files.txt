@@ -1,0 +1,5 @@
+Create and delete folders and files
+
+Create directory: mkdir command
+Create file: touch command
+Delete folders and files: rm command

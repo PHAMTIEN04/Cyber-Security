@@ -1,0 +1,6 @@
+Text editor: vi
+
+vi has 3 working modes:
+Command mode (default): move text, cut and paste.. (Esc)
+Insert mode: text editor (press i key)
+Ex mode: Save and exit text... (press key:)

@@ -1,0 +1,4 @@
+Copy, move, rename files and folders
+
+Copy files and directories: cp command
+Move, rename files and directories: mv command

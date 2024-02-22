@@ -1,0 +1,8 @@
+A few useful tips when typing commands
+
+Up arrow and down arrow keys to re-command.
+Ctrl + c key to cancel the command
+Clear screen (clear, Ctrl + 1)
+Tab to suggest file names
+history. history
+Find the command you typed with the key combination Ctrl + r
