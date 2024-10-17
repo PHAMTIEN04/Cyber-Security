@@ -1,0 +1,65 @@
+#2
+Create Account
+->sudo adduser <username>
+View Info Accounts
+->sudo /etc/passwd
+View Info Groups
+-> sudo /etc/group
+View Info UserName and Password
+-> sudo /etc/shadow
+Change info
+-> sudo usermod
+ex:
+sudo usermod -h
+sudo usermod -e <date> <username>
+
+View info account
+->sudo chage -l <username>
+
+Create Group
+->sudo groupadd <namegroup>
+
+View info group
+->sudo groups <username>
+
+Move account to group
+->sudo usermod -a -G <namegroup> <username>
+
+Lock account
+->sudo usermod -L <username>
+Unlock account
+->sudo usermod -U <username>
+#3
+show privileges
+-> sudo cat /etc/sudoers
+allow privileges
+-> sudo usermod -aG <groupname> <usename>
+delete privileges
+-> sudo gpasswd -d <username> <groupname>
+#4
+create disk
+display practition 
+->sudo fdisk -l
+practition
+->sudo fdisk <namedisk>
+format
+->sudo mkfs.ext4 <namedisk>
+mount
+->sudo mount <namediskpractition> <destination>
+display disk
+->sudo df -h
+#5
+d|---(owner)|---(group)|---(other)
+move group
+-> sudo chown <owner>:<namegroup> <folder>
+privileges
+-> sudo chmod 
+1: read
+2: write
+4: excute
+*tool acl
+->getfacl <filename>
+--  privileges info display
+->sudo setfacl g:<namegroup>:<privileges> <folder>
+	       u:<nameuser>:<privileges> <folder>
+	       o:<privileges> <folder>  
