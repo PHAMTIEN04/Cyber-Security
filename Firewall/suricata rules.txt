@@ -1,0 +1,95 @@
+
+Trong Suricata và Snort, khi viết các quy tắc (rules), bạn có thể sử dụng nhiều action, protocol, và options để kiểm soát cách thức hệ thống phát hiện và phản ứng với các gói tin mạng. Dưới đây là danh sách các thành phần quan trọng:
+
+1. Action (Hành động)
+Action chỉ định hành động mà hệ thống sẽ thực hiện khi một quy tắc được kích hoạt. Các hành động phổ biến bao gồm:
+
+alert: Tạo một cảnh báo khi quy tắc khớp.
+
+Ví dụ: alert tcp any any -> any any (msg:"Alert Example"; sid:1000001;)
+log: Ghi lại lưu lượng mạng khớp với quy tắc mà không tạo cảnh báo.
+
+Ví dụ: log tcp any any -> any any (sid:1000002;)
+pass: Bỏ qua gói tin, không tạo cảnh báo hay ghi lại.
+
+Ví dụ: pass tcp any any -> any any (sid:1000003;)
+drop: Ngăn chặn gói tin (chỉ hoạt động trong chế độ IPS), không cho phép nó đi qua và ghi lại sự kiện.
+
+Ví dụ: drop tcp any any -> any any (sid:1000004;)
+reject: Ngăn chặn gói tin, giống như drop, nhưng cũng gửi trả về một phản hồi ICMP hoặc TCP reset cho nguồn.
+
+Ví dụ: reject tcp any any -> any any (sid:1000005;)
+sdrop: Tương tự như drop, nhưng không ghi lại sự kiện nào.
+
+Ví dụ: sdrop tcp any any -> any any (sid:1000006;)
+2. Protocol (Giao thức)
+Protocol chỉ định giao thức mạng mà quy tắc sẽ áp dụng. Các giao thức thông dụng bao gồm:
+
+tcp: Áp dụng cho lưu lượng sử dụng giao thức TCP.
+
+Ví dụ: alert tcp any any -> any any (sid:1000007;)
+udp: Áp dụng cho lưu lượng sử dụng giao thức UDP.
+
+Ví dụ: alert udp any any -> any any (sid:1000008;)
+icmp: Áp dụng cho lưu lượng ICMP (ví dụ như gói tin ping).
+
+Ví dụ: alert icmp any any -> any any (sid:1000009;)
+ip: Áp dụng cho tất cả lưu lượng mạng không phân biệt giao thức.
+
+Ví dụ: alert ip any any -> any any (sid:1000010;)
+3. Options (Tùy chọn)
+Options là nơi bạn có thể chỉ định các điều kiện mà gói tin phải đáp ứng để kích hoạt quy tắc. Các option đi kèm với các cặp khóa-giá trị được bao bọc bởi dấu ngoặc đơn ().
+
+Các Option Phổ Biến
+msg: Hiển thị thông báo khi quy tắc được kích hoạt.
+
+Ví dụ: msg:"Possible attack detected";
+sid: Số định danh quy tắc, phải là duy nhất trong mỗi quy tắc.
+
+Ví dụ: sid:1000011;
+rev: Phiên bản của quy tắc. Nếu bạn cập nhật quy tắc, bạn có thể tăng giá trị này.
+
+Ví dụ: rev:1;
+content: Kiểm tra nội dung trong gói tin. Dùng để xác định chuỗi cụ thể trong payload.
+
+Ví dụ: content:"GET /index.html";
+dsize: Kiểm tra kích thước dữ liệu trong gói tin (payload).
+
+Ví dụ: dsize:>100;
+flags: Kiểm tra cờ TCP trong tiêu đề TCP (ví dụ: SYN, ACK, FIN).
+
+Ví dụ: flags:S; (kiểm tra cờ SYN trong gói TCP)
+ttl: Kiểm tra giá trị Time-to-Live (TTL) trong gói tin IP.
+
+Ví dụ: ttl:100;
+flow: Kiểm tra hướng của dòng dữ liệu, ví dụ from_client, to_server.
+
+Ví dụ: flow:to_server;
+nocase: Được sử dụng kết hợp với content, chỉ định rằng tìm kiếm không phân biệt chữ hoa chữ thường.
+
+Ví dụ: content:"login"; nocase;
+offset và depth: Chỉ định nơi bắt đầu và kết thúc tìm kiếm chuỗi trong gói tin.
+
+Ví dụ: content:"POST"; offset:0; depth:4;
+isdataat: Kiểm tra xem có dữ liệu tại một điểm cụ thể trong gói tin hay không.
+
+Ví dụ: isdataat:32,relative;
+within: Kiểm tra nếu chuỗi tìm kiếm nằm trong một phạm vi byte nhất định.
+
+Ví dụ: content:"HTTP"; within:50;
+pcre: Dùng biểu thức chính quy để kiểm tra nội dung trong gói tin.
+
+Ví dụ: pcre:"/username=[A-Za-z0-9]+/";
+reference: Chỉ ra nguồn tham khảo về cuộc tấn công hoặc lỗi bảo mật, chẳng hạn như CVE hoặc Bugtraq.
+
+Ví dụ: reference:cve,2009-1234;
+classtype: Xác định loại tấn công dựa trên các lớp phân loại có sẵn.
+
+
+
+struct:
+action protocol source_ip source_port -> destination_ip destination_port (options)
+
+ex
+
+alert icmp any any -> any any (msg:'attack';dsize:>10000;sid:100001;rev:1)
