@@ -1,0 +1,7 @@
+echo "Input a"
+read a
+echo "Input b"
+read b
+total=$((a+b))
+
+echo "Total $a + $b = $total"

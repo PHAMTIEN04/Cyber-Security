@@ -1,0 +1,16 @@
+a=1
+b=2
+tong=$((a+b))
+tru=$((a-b))
+nhan=$((a*b))
+chia=$((a/b))
+chiadu=$((a%b))
+
+echo "Total $a + $b = $tong"
+echo "Sub $a - $b = $tru"
+echo "Mul $a * $b = $nhan"
+echo "Div $a / $b = $chia"
+echo "Mod $a % $b = $chiadu"
+
+syntax:var=$((expression))
+

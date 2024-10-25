@@ -1,0 +1,8 @@
+name=Tien
+old=18
+
+echo $name $old
+
+Note:
+-There must be a variable declaration with the correct syntax variable_name=value, note no spaces, that is the rule
+-When you want to access the value of a variable, you need to add a $ sign before the variable name $variable_name

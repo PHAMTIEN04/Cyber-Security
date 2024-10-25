@@ -1,0 +1,21 @@
+echo "Input a"
+read a
+echo "Input b"
+read b
+echo "Input c"
+read c
+
+if [ $a -lt $b -a $b -eq $c ]
+then 
+	echo "$a < $b = $c"
+elif [ $a -eq $b -o $b -eq $c ] 
+then
+	echo "$a = $b or $b = $c"
+else
+	echo "$a > $b"
+fi
+
+syntax : if [ <> ] then ... elif [ <> ] then ... else ... fi
+-a : and 
+-o : or
+note: Pay attention to the distance ([ <> ])
