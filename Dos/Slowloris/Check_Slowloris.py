@@ -7,7 +7,7 @@ socks_list = []
 
 def init_sock():
     s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
-    s.connect(("tsug0d.com", 80))  # Change port to 80
+    s.connect(("truongqb05.pythonanywhere.com", 443))  # Change port to 80
     s.sendall(b"GET / HTTP/1.1\r\nHost: tsug0d.com\r\n")  # Fix HTTP request format
     return s
 
