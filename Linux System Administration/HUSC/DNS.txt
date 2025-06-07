@@ -1,0 +1,12 @@
+- Nameserver: là máy chủ tên miền chứa cơ sở dữ liệu cho việc chuyển đổi giua tên miền và 
+dia chỉ IP
+- DNS có 2 kiểu máy chủ: + primary name server : lấy dữ liệu cho các zone từ file có sẵn trên máy
+		       + secondary name server : lấy dữ liệu từ primary ns về secondary duoc gọi là zone transfer
+- Bản ghi kiểu A: dùng de chuyển đổi từ tên miền sang dia chi ip tương ung
+- Bản ghi kiểu AAAA: dùng de chuyển đổi từ tên miền sang dia chi ip6 tương ung
+- CNAME: +Cho phép 1 máy tính có thể nhiều tên. Nhiều tên miền cùng tro den 1 IP
+	 +Phải có bản ghi kiểu A de khai báo tên máy
+	 +Tên mien duoc bản ghi A trỏ den dia chi IP cua may là tên miền chính
+- MX: Bản ghi MX dùng de khai báo server chuyển tiếp thư điện từ của một tên miền
+- NS: khai báo máy chủ cho một tên miền. Cho biết tên miền này duoc khai bao trên máy chủ nào
+- PTR: cho phép chuyển doi IP sang tên miềns

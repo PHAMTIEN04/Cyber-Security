@@ -1,0 +1,173 @@
+Tuyệt vời, mình sẽ giúp bạn **tóm gọn trọn bộ quy trình cấu hình DNS nội bộ bằng BIND9 + Apache (XAMPP)** để các tên miền chính/phụ có thể hoạt động độc lập trong mạng LAN, mỗi tên miền đều có file HTML riêng:
+
+---
+
+# ✅ **TÓM TẮT CÁC BƯỚC CẤU HÌNH DNS + VIRTUALHOST TRONG MẠNG LAN**
+
+---
+
+## 🧩 **1. Cài đặt dịch vụ cần thiết**
+
+```bash
+sudo apt install bind9 apache2
+```
+
+(Nếu dùng XAMPP thì Apache đã có sẵn, không cần cài.)
+
+---
+
+## 🌐 **2. Cấu hình zone DNS trong `bind9`**
+
+### 🗂 File: `/etc/bind/named.conf.local`
+
+```bash
+zone "phuongan.love" {
+    type master;
+    file "/etc/bind/db.phuongan.love";
+};
+
+zone "1.168.192.in-addr.arpa" {
+    type master;
+    file "/etc/bind/db.192";
+};
+```
+
+---
+
+## 📄 **3. Tạo file zone chính `db.phuongan.love`**
+
+**File: `/etc/bind/db.phuongan.love`**
+
+```dns
+$TTL 604800
+@   IN  SOA ns.phuongan.love. admin.phuongan.love. (
+        2        ; Serial
+        604800   ; Refresh
+        86400    ; Retry
+        2419200  ; Expire
+        604800 ) ; Negative Cache TTL
+
+@   IN  NS   ns.phuongan.love.
+@   IN  A    192.168.1.15
+www IN  A    192.168.1.15
+```
+
+---
+
+## 🔁 **4. Tạo zone ngược `db.192` (PTR)**
+
+**File: `/etc/bind/db.192`**
+
+```dns
+$TTL 604800
+@   IN  SOA ns.phuongan.love. admin.phuongan.love. (
+        1        ; Serial
+        604800   ; Refresh
+        86400    ; Retry
+        2419200  ; Expire
+        604800 ) ; Negative Cache TTL
+
+@   IN  NS   ns.phuongan.love.
+15  IN  PTR  phuongan.love.
+```
+
+> ⚠️ Chỉ dùng 1 PTR cho mỗi IP là tốt nhất.
+
+---
+
+## 🔎 **5. Kiểm tra và restart BIND**
+
+```bash
+sudo named-checkzone phuongan.love /etc/bind/db.phuongan.love
+sudo named-checkzone 1.168.192.in-addr.arpa /etc/bind/db.192
+sudo systemctl restart bind9
+```
+
+---
+
+## 💻 **6. Trên các máy trong mạng LAN:**
+
+Cấu hình file `hosts` để nhận domain (nếu không dùng DNS toàn mạng):
+
+**Windows:**
+
+```
+C:\Windows\System32\drivers\etc\hosts
+```
+
+**Linux:**
+
+```
+/etc/hosts
+```
+
+Thêm dòng:
+
+```text
+192.168.1.15   phuongan.love www.phuongan.love
+```
+
+---
+
+## 🧰 **7. Cấu hình Apache (XAMPP) để phục vụ từng domain**
+
+### Bật `httpd-vhosts.conf` trong `httpd.conf`:
+
+Tìm dòng sau:
+
+```apache
+#Include conf/extra/httpd-vhosts.conf
+```
+
+→ Bỏ dấu `#`
+
+---
+
+### Cấu hình VirtualHost trong file: `httpd-vhosts.conf`
+
+**Windows: `C:\xampp\apache\conf\extra\httpd-vhosts.conf`**  
+**Linux XAMPP: `/opt/lampp/etc/extra/httpd-vhosts.conf`**
+
+```apache
+<VirtualHost *:80>
+    ServerName phuongan.love
+    DocumentRoot "C:/xampp/htdocs/phuongan"
+</VirtualHost>
+
+<VirtualHost *:80>
+    ServerName www.phuongan.love
+    DocumentRoot "C:/xampp/htdocs/phuongan_www"
+</VirtualHost>
+```
+
+> ⚠️ Mỗi tên miền nên trỏ vào thư mục riêng, có file `index.html` riêng bên trong.
+
+---
+
+## 📁 **8. Tạo nội dung HTML cho từng domain**
+
+- `C:\xampp\htdocs\phuongan\index.html` → nội dung của `phuongan.love`
+- `C:\xampp\htdocs\phuongan_www\index.html` → nội dung của `www.phuongan.love`
+
+---
+
+## 🔁 **9. Restart Apache**
+
+- Trên Windows: dùng XAMPP Control Panel → Restart Apache
+- Trên Linux:  
+```bash
+sudo /opt/lampp/lampp restart
+```
+
+---
+
+## ✅ XONG! GIỜ ĐÂY:
+
+| Tên miền              | Truy cập trong mạng LAN       |
+|-----------------------|-------------------------------|
+| `http://phuongan.love`      | Hiện file `htdocs/phuongan/index.html` |
+| `http://www.phuongan.love`  | Hiện file `htdocs/phuongan_www/index.html` |
+
+---
+
+Bạn muốn mình đóng gói một bộ mẫu cấu hình đầy đủ sẵn để bạn chỉ cần sửa IP và domain không? Mình gửi bạn luôn 😎

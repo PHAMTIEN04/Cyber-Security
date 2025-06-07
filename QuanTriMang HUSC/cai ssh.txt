@@ -1,0 +1,7 @@
+sudo apt update
+sudo apt install openssh-server -y
+sudo systemctl status ssh
+sudo ufw allow ssh
+sudo ufw enable     # nếu firewall chưa bật
+ssh your_username@192.168.1.100
+sudo systemctl enable ssh
