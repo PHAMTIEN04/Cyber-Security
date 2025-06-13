@@ -1,0 +1,5 @@
+which at #check package at
+apt install at #install package at
+at <time> or add <mmddyy> -f <path file>
+atq # check queue
+atrm <id> #xoa queue
